@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/screens/welcome/moving_btn.dart';
 import 'package:video_player/video_player.dart';
 
 class Welcome extends StatefulWidget {
@@ -39,11 +40,10 @@ class _WelcomeState extends State<Welcome> {
               bottom: 50,
               child: SafeArea(
                 child: Container(
-                  color: Color.fromRGBO(0, 0, 0, 0.2),
                   child: Column(
                     children: [
                       Text(
-                        'Explorez \ndes beautés ',
+                        'Explorez \nles beautés du monde',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                   
@@ -53,6 +53,7 @@ class _WelcomeState extends State<Welcome> {
                           fontWeight: FontWeight.w700
                         ),
                       ),
+                      SizedBox(height: 10),
                       Text(
                         'Vivez des beaux moments dans de beaux endroits',
                         style: TextStyle(
@@ -60,26 +61,12 @@ class _WelcomeState extends State<Welcome> {
                           color: Colors.white,
                           fontFamily: 'SourceSansPro',
                           fontSize: 18,
-                          fontWeight: FontWeight.w200
+                          // fontWeight: FontWeight.w600
                         ),
 
                       ),
-                      Container(
-                        width: 80,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                            colors: [
-                              Colors.black,
-                              Colors.black54
-                            ],
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(50))
-
-                        ),
-                      )
+                      SizedBox(height: 40),
+                      MovingBtn()
                     ],
                   ),
                 ),

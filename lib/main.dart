@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/screens/home/home.dart';
 import 'package:tourism_app/screens/welcome/welcome.dart';
 
 void main() {
@@ -14,10 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         primarySwatch: Colors.teal,
       ),
-      home: const Welcome(),
+      home: const Home(),
     );
   }
 }
