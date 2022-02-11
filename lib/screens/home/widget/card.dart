@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 
 
 class OneCard extends StatelessWidget {
@@ -7,15 +8,15 @@ class OneCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
-      width: 250,
+      height: 320,
+      width: 280,
       margin: EdgeInsets.only(right: 30),
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
           Container(
-            height: 300,
-            width: 250,
+            height: 320,
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               image: DecorationImage(
@@ -26,17 +27,30 @@ class OneCard extends StatelessWidget {
               )
             ),
             ),
+            //
+            //
+                //Adding or Removing 
+            //
+            //
+            Positioned(
+              right: 20,
+              top: 20,
+              child: AddToFavorite()
+            ),
+            //
+            //
+                //Bottom banner
+            //
+            //
           Positioned(
             bottom: 15,
             child: Container(
-              // height: 100,
-              // alignment: Alignment.bottomCenter,
               child: Stack(
                 children: [
                   Container(
                     alignment: Alignment.bottomCenter,
                     height: 100,
-                    width: 220,
+                    width: 240,
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -44,7 +58,7 @@ class OneCard extends StatelessWidget {
                       ),
                       alignment: Alignment.topLeft,
                       height: 80,
-                      width: 220,
+                      width: 240,
                       padding: EdgeInsets.only(top: 15, left: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +108,7 @@ class OneCard extends StatelessWidget {
                             '4.9',
                             style: TextStyle(
                               fontFamily: 'SourceSansPro',
-                              fontWeight: FontWeight.w600
+                              fontWeight: FontWeight.w800,
                             ),
                             )
                         ],
@@ -108,6 +122,49 @@ class OneCard extends StatelessWidget {
           
         ],
       )
+    );
+  }
+}
+
+class AddToFavorite extends StatefulWidget {
+  const AddToFavorite({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<AddToFavorite> createState() => _AddToFavoriteState();
+}
+
+class _AddToFavoriteState extends State<AddToFavorite> {
+  bool isFavorite = false;
+  
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 50,
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(.7),
+        borderRadius: BorderRadius.all(Radius.circular(40))
+      ),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            isFavorite = !isFavorite;
+          });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(.9),
+            borderRadius: BorderRadius.all(Radius.circular(40))
+          ),
+          child: Icon(
+            isFavorite ? IconlyBold.heart  : IconlyLight.heart,
+            color: isFavorite ? Colors.red : Colors.black87,
+            ),
+        ),
+      ),
     );
   }
 }

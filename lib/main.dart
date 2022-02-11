@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourism_app/screens/home/home.dart';
+import 'package:tourism_app/screens/login/login.dart';
 import 'package:tourism_app/screens/welcome/welcome.dart';
 
 void main() {
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const Home(),
+      home: const Login(),
     );
   }
 }

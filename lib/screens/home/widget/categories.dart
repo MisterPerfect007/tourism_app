@@ -10,7 +10,6 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topLeft,
-      // color: Colors.red.shade100,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
