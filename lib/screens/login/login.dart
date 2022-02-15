@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 30,
+                        height: 15,
                       ),
                       Container(
                         padding: EdgeInsets.all(5),
@@ -53,7 +53,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 15,
                       ),
                       Expanded(child: FormContainer(screenWidth: screenWidth))
                     ]
@@ -75,36 +75,35 @@ class FormContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: MediaQuery.of(context).size.height * .7,
-        // color: Colors.red.shade100, 
-        child: Column(
-          children: [
-            Text('Connectez-vous !',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontFamily: 'SourceSansPro',
-                    fontWeight: FontWeight.w600)),
-            Text('Et explorez de beaux endroits ',
-                textAlign: TextAlign.left,
-                style: TextStyle(
+    return Container(
+      height: MediaQuery.of(context).size.height * .7,
+      // color: Colors.red.shade100, 
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Connectez-vous !',
+              textAlign: TextAlign.left,
+              style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 33,
                   fontFamily: 'SourceSansPro',
-                  // fontWeight: FontWeight.w500
-                )),
-            SizedBox(
-              height: 30,
-            ),
-            Expanded(child: LoginForm(screenWidth: screenWidth)),
-            SizedBox(
-              height: 100,
-            ),
-          ],
-        ),
+                  fontWeight: FontWeight.w700)),
+          Text('Et explorez de beaux endroits ',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'SourceSansPro',
+                // fontWeight: FontWeight.w500
+              )),
+          SizedBox(
+            height: 30,
+          ),
+          Expanded(child: LoginForm(screenWidth: screenWidth)),
+          SizedBox(
+            height: 50,
+          ),
+        ],
       ),
     );
   }

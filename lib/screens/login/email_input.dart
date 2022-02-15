@@ -14,11 +14,11 @@ class EmailInput extends StatefulWidget {
 }
 
 class _EmailInputState extends State<EmailInput> {
-  @override
     GlobalKey<FormFieldState> _emailKey = GlobalKey<FormFieldState>();
 
     bool _isEmailValide = true;
     String _validationMessage = '';
+    String emailRegex = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
 
     void _validateEmail(value) {
       if (value!.isEmpty) {
@@ -26,7 +26,7 @@ class _EmailInputState extends State<EmailInput> {
         setState(() {
           _isEmailValide = false;
         });
-      }else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+      }else if (!RegExp(emailRegex).hasMatch(value)){
       _validationMessage = 'Ce e-mail n\'est pas correct';
       setState(() {
         _isEmailValide = false;
@@ -38,6 +38,7 @@ class _EmailInputState extends State<EmailInput> {
         });
       }
     }
+  @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -57,8 +58,12 @@ class _EmailInputState extends State<EmailInput> {
             child: TextFormField(
               key: _emailKey,
               onChanged: (value) {
-                _validateEmail(value);
+                setState((){
+                  _isEmailValide = true;
+                });
+                // _validateEmail(value);
               },
+              keyboardType: TextInputType.emailAddress,
               cursorColor: Colors.white,
               style: TextStyle(
                   color: Colors.white, fontSize: 23, fontFamily: 'SourceSansPro'),

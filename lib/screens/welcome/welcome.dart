@@ -15,7 +15,7 @@ class _WelcomeState extends State<Welcome> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/welcome.mp4')
+    _controller = VideoPlayerController.asset('assets/videos/beach1.mp4')
       ..initialize().then((_) {
         setState(() {});
       });
@@ -30,7 +30,7 @@ class _WelcomeState extends State<Welcome> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.red.shade100,
+        color: Colors.white,
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [

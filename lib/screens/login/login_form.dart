@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:iconly/iconly.dart';
+import 'package:tourism_app/screens/Register/register.dart';
 
 import 'email_input.dart';
 import 'password_input.dart';
@@ -42,7 +43,8 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('J\'ai pas de compte'),
+              
+              
               SizedBox(height: 10),
               Container(
                 width: widget.screenWidth,
@@ -52,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
                       _formKey.currentState!.validate();
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.white.withOpacity(0.8),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +71,24 @@ class _LoginFormState extends State<LoginForm> {
                             color: Colors.black, size: 30)
                       ],
                     )),
-              )
+              ),
+              SizedBox(height: 15,),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context, MaterialPageRoute(
+                      builder: (context) => Register()));
+                },
+                child: Text(
+                  'Créer un compte',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500
+                  ),
+                ),
+              ),
             ],
           ),
         ),
