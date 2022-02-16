@@ -1,20 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:iconly/iconly.dart';
+import 'package:tourism_app/screens/Register/helpers.dart';
 
 import 'login_form.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  final bool? fromRegister;
+  const Login({Key? key, this.fromRegister}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  bool isFromRegister = false;
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      isFromRegister = widget.fromRegister == true;
+    });
+  }
+
+  void showSnackBarIfFromRegister() {
+    if (isFromRegister) {
+      showSnackBar(context,
+          title: 'Vous pouvez vous connecter !',
+          message: 'Inscription réussie .',
+          type: 'success'
+          );
+    }
+    isFromRegister = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      showSnackBarIfFromRegister();
+    });
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -56,12 +81,9 @@ class _LoginState extends State<Login> {
                         height: 15,
                       ),
                       Expanded(child: FormContainer(screenWidth: screenWidth))
-                    ]
-                  ),
+                    ]),
               ),
-            )
-          )
-        );
+            )));
   }
 }
 
@@ -77,7 +99,7 @@ class FormContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * .7,
-      // color: Colors.red.shade100, 
+      // color: Colors.red.shade100,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

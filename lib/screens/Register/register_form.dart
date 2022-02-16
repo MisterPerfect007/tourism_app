@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tourism_app/screens/Register/name_input.dart';
+import 'package:tourism_app/screens/login/login.dart';
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 import 'email_input.dart';
 import 'helpers.dart';
@@ -141,8 +144,7 @@ class _RegisterFormState extends State<RegisterForm> {
         formData["password"].isNotEmpty &&
         formData["password"] == confirmPassword &&
         !(await isAlreadyExist('email', formData["email"])) &&
-        !(await isAlreadyExist('pseudo', formData["pseudo"])) 
-      ) {
+        !(await isAlreadyExist('pseudo', formData["pseudo"]))) {
       setState(() {
         isProcessing = true;
       });
@@ -174,9 +176,22 @@ class _RegisterFormState extends State<RegisterForm> {
       }
       // print(prefs.getString('users'));
       // prefs.remove('users');
+      showSnackBar(context,
+          title: 'Incription faite avec Succès',
+          message: 'Redirection ...',
+          type: 'success');
+
+      await Future.delayed(Duration(seconds: 5), () {});
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Login(
+                    fromRegister: true,
+                  )));
     }
   }
 }
-void handleExistingEmail(email){
+// void handleExistingEmail(email){
   
-}
+// }

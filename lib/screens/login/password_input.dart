@@ -6,8 +6,10 @@ import 'form_field_error.dart';
 import 'package:tourism_app/utils/password_validation.dart';
 
 class PasswordInput extends StatefulWidget {
+  final Function setPassword;
   const PasswordInput({
     Key? key,
+    required this.setPassword
   }) : super(key: key);
 
   @override
@@ -43,6 +45,11 @@ class _PasswordInputState extends State<PasswordInput> {
             width: screenWidth,
             borderRadius: BorderRadius.all(Radius.circular(5)),
             child: TextFormField(
+              onSaved: (newValue){
+                setState(() {
+                  widget.setPassword(newValue);
+                });
+              },
               onChanged: (value) {
                 setState(() {
                   _isValide = true;

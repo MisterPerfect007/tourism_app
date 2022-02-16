@@ -5,8 +5,10 @@ import 'package:iconly/iconly.dart';
 import 'form_field_error.dart';
 
 class EmailInput extends StatefulWidget {
+  final Function setEmail;
   const EmailInput({
     Key? key,
+    required this.setEmail
   }) : super(key: key);
 
   @override
@@ -57,6 +59,11 @@ class _EmailInputState extends State<EmailInput> {
             borderRadius: BorderRadius.all(Radius.circular(5)),
             child: TextFormField(
               key: _emailKey,
+              onSaved: (newValue) {
+                setState(() {
+                  widget.setEmail(newValue);
+                });
+              },
               onChanged: (value) {
                 setState((){
                   _isEmailValide = true;

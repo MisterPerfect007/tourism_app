@@ -1,16 +1,40 @@
 [
     {
-        "city": "Kanifushi ",
+        "city": "Maldives ",
         "country": "Maldives",
         "continent": "Asie",
-        "description": "Kanifushi est une petite île inhabitée des Maldives. Elle constitue une des îles-hôtel des Maldives en accueillant le Athmosphere Kanifushi Maldives.",
+        "description": "Les Maldives sont un pays tropical de l'océan Indien composé de 26 atolls en forme d'anneaux comprenant plus de 1 000 îles coralliennes. Elles sont réputées pour leurs plages, leurs lagons bleus et leurs vastes récifs.",
         "rating": "4.8",
         "price": "60",
         "videos": [
             ""
         ],
         "images": [
+            "assets/images/maldives/img1.jpg",
+            "assets/images/maldives/img2.jpg",
+            "assets/images/maldives/img3.jpg",
+            "assets/images/maldives/img4.jpg",
+            "assets/images/maldives/img5.jpg",
+            "assets/images/maldives/img6.jpg"
+        ]
+    },
+    {
+        "city": "Hawaï ",
+        "country": "État des États-Unis",
+        "continent": "Amérique du Nord",
+        "description": "Hawaii, un État américain, est un archipel volcanique isolé dans le Pacifique central. Ses îles sont réputées pour leurs paysages accidentés composés de falaises, de chutes d'eau, de forêt tropicale et de plages dont le sable arbore des teintes dorées, rouges, noires, voire vertes. ",
+        "rating": "4.9",
+        "price": "100",
+        "videos": [
             ""
+        ],
+        "images": [
+            "assets/images/hawai/img1.jpg",
+            "assets/images/hawai/img2.jpg",
+            "assets/images/hawai/img3.jpg",
+            "assets/images/hawai/img4.jpg",
+            "assets/images/hawai/img5.jpg",
+            "assets/images/hawai/img6.jpg"
         ]
     }
 ]

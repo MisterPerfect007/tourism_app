@@ -34,6 +34,7 @@ class _BottomNavBarItemState extends State<BottomNavBarItem> {
         });
       },
       child: AnimatedContainer(
+        margin: EdgeInsets.only(bottom: isSelected() ? 25:0),
         duration: Duration(milliseconds: 300),
         height: 40,
         width: 40,

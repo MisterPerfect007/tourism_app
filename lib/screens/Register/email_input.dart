@@ -30,7 +30,7 @@ class _EmailInputState extends State<EmailInput> {
           _isEmailValide = false;
         });
       }else if (!RegExp(emailRegex).hasMatch(value)){
-      _validationMessage = 'Ce e-mail n\'est pas correct';
+      _validationMessage = 'Cet e-mail n\'est pas correct';
       setState(() {
         _isEmailValide = false;
       });
