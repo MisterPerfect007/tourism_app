@@ -1,5 +1,6 @@
 [
     {
+        "id": "b1",
         "city": "Maldives ",
         "country": "Maldives",
         "continent": "Asie",
@@ -10,15 +11,16 @@
             ""
         ],
         "images": [
-            "assets/images/maldives/img1.jpg",
-            "assets/images/maldives/img2.jpg",
-            "assets/images/maldives/img3.jpg",
-            "assets/images/maldives/img4.jpg",
-            "assets/images/maldives/img5.jpg",
-            "assets/images/maldives/img6.jpg"
+            "assets/images/beach/maldives/img1.jpg",
+            "assets/images/beach/maldives/img2.jpg",
+            "assets/images/beach/maldives/img3.jpg",
+            "assets/images/beach/maldives/img4.jpg",
+            "assets/images/beach/maldives/img5.jpg",
+            "assets/images/beach/maldives/img6.jpg"
         ]
     },
     {
+        "id": "b2",
         "city": "Hawaï ",
         "country": "État des États-Unis",
         "continent": "Amérique du Nord",
@@ -29,12 +31,50 @@
             ""
         ],
         "images": [
-            "assets/images/hawai/img1.jpg",
-            "assets/images/hawai/img2.jpg",
-            "assets/images/hawai/img3.jpg",
-            "assets/images/hawai/img4.jpg",
-            "assets/images/hawai/img5.jpg",
-            "assets/images/hawai/img6.jpg"
+            "assets/images/beach/hawai/img1.jpg",
+            "assets/images/beach/hawai/img2.jpg",
+            "assets/images/beach/hawai/img3.jpg",
+            "assets/images/beach/hawai/img4.jpg",
+            "assets/images/beach/hawai/img5.jpg",
+            "assets/images/beach/hawai/img6.jpg"
+        ]
+    },
+    {
+        "id": "b3",
+        "city": "Bali ",
+        "country": "Indonésie",
+        "continent": "Amérique du Nord",
+        "description": "Bali est une île indonésienne célèbre pour ses montagnes volcaniques boisées, ses rizières, ses plages et ses récifs coralliens. L’île abrite des sites religieux, comme le temple d’Uluwatu construit au sommet d’une falaise à pic.",
+        "rating": "5.0",
+        "price": "84",
+        "videos": [
+            ""
+        ],
+        "images": [
+            "assets/images/beach/bali/img1.jpg",
+            "assets/images/beach/bali/img2.jpg",
+            "assets/images/beach/bali/img3.jpg",
+            "assets/images/beach/bali/img4.jpg",
+            "assets/images/beach/bali/img5.jpg"
+        ]
+    },
+    {
+        "id": "b4",
+        "city": "Concha ",
+        "country": "Espagne",
+        "continent": "Europe",
+        "description": "La plage de la Concha (Kontxa hondartza en basque, playa de la Concha en espagnol) est une plage située sur la côte basque1 dans la baie de la Concha, dans la ville de Saint-Sébastien (Espagne). ",
+        "rating": "4.2",
+        "price": "67",
+        "videos": [
+            ""
+        ],
+        "images": [
+            "assets/images/beach/concha/img1.jpg",
+            "assets/images/beach/concha/img2.jpg",
+            "assets/images/beach/concha/img3.jpg",
+            "assets/images/beach/concha/img4.jpg",
+            "assets/images/beach/concha/img5.jpg"
         ]
     }
 ]

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app/screens/home/widget/cards.dart';
+import 'package:tourism_app/screens/home/widget/cards/cards.dart';
 import 'package:tourism_app/screens/home/widget/categories.dart';
 import 'package:tourism_app/screens/home/widget/home_app_bar.dart';
 import 'package:tourism_app/widget/bottomNavBar/bottom_nav_bar.dart';
