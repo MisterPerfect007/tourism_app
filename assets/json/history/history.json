@@ -1,0 +1,63 @@
+[
+    {
+        "id": "h1",
+        "name": "Grande Muraille",
+        "city": "",
+        "country": "Chine",
+        "continent": "Asie",
+        "description": "La Grande Muraille, aussi appelé « Les Grandes Murailles » est un ensemble de fortifications militaires chinoises construites, détruites et reconstruites en plusieurs fois et à plusieurs endroits entre le IIIᵉ siècle av. J.-C. et le XVIIᵉ siècle pour marquer et défendre la frontière nord de la Chine",
+        "rating": "5.0",
+        "price": "55",
+        "videos": [
+            ""
+        ],
+        "images": [
+            "assets/images/history/chinagreatwall/img1.jpg",
+            "assets/images/history/chinagreatwall/img2.jpg",
+            "assets/images/history/chinagreatwall/img3.jpg",
+            "assets/images/history/chinagreatwall/img4.jpg",
+            "assets/images/history/chinagreatwall/img5.jpg"
+        ]
+    },
+    {
+        "id": "h2",
+        "name": "Pétra",
+        "city": "",
+        "country": "Jordanie",
+        "continent": "Asie",
+        "description": "Pétra est un site archéologique célèbre, situé dans le désert sud-ouest jordanien. Remontant à environ 300 av. J.C., elle fut la capitale du royaume nabatéen.",
+        "rating": "4.4",
+        "price": "34",
+        "videos": [
+            ""
+        ],
+        "images": [
+            "assets/images/history/petra/img1.jpg",
+            "assets/images/history/petra/img2.jpg",
+            "assets/images/history/petra/img3.jpg",
+            "assets/images/history/petra/img4.jpg",
+            "assets/images/history/petra/img5.jpg",
+            "assets/images/history/petra/img6.jpg"
+        ]
+    },
+    {
+        "id": "h3",
+        "name": "Pyramides de Gizeh",
+        "city": "",
+        "country": "Egypte",
+        "continent": "Afrique",
+        "description": "Les pyramides de Gizeh, aussi appelées complexe pyramidal de Gizeh, sont l'ensemble des pyramides égyptiennes situées dans la nécropole de Gizeh sur le plateau de Gizeh. Ce complexe pyramidal égyptien est classé au patrimoine mondial de l'humanité depuis 1979. ",
+        "rating": "4.5",
+        "price": "54",
+        "videos": [
+            ""
+        ],
+        "images": [
+            "assets/images/history/pyramids/img1.jpg",
+            "assets/images/history/pyramids/img2.jpg",
+            "assets/images/history/pyramids/img3.jpg",
+            "assets/images/history/pyramids/img4.jpg",
+            "assets/images/history/pyramids/img5.jpg"
+        ]
+    }
+]

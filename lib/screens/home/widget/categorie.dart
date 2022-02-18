@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tourism_app/getx/beach_controler.dart';
 import 'package:tourism_app/getx/categorie_controller.dart';
 
 class Categorie extends StatelessWidget {
@@ -13,8 +14,11 @@ class Categorie extends StatelessWidget {
   final CategorieController categorieController =
       Get.put(CategorieController());
 
+    
   @override
   Widget build(BuildContext context) {
+
+
     return GestureDetector(
       onTap: () {
         categorieController.setCurrentCategorie(name);

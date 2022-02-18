@@ -12,51 +12,29 @@
             ""
         ],
         "images": [
-            "assets/images/mountain/cervin/img1.jpg",
-            "assets/images/mountain/cervin/img2.jpg",
-            "assets/images/mountain/cervin/img3.jpg",
-            "assets/images/mountain/cervin/img4.jpg",
-            "assets/images/mountain/cervin/img5.jpg",
-            "assets/images/mountain/cervin/img6.jpg"
+            "assets/images/forest/redwood/img1.jpg",
+            "assets/images/forest/redwood/img2.jpg",
+            "assets/images/forest/redwood/img3.jpg",
+            "assets/images/forest/redwood/img4.jpg"
         ]
     },
     {
         "id": "f2",
-        "name": "Denali",
-        "city": "Alaska",
-        "country": "États-Unis",
-        "continent": "Amérique",
-        "description": "Le Denali, appelé mont McKinley de 1896 à 2015, est une montagne s'élevant à 6 190 mètres d'altitude dans la chaîne d'Alaska, dans l'État du même nom aux États-Unis.",
-        "rating": "4.3",
-        "price": "89",
+        "name": "Amazonie",
+        "city": "",
+        "country": "Brésil",
+        "continent": "Amérique du Sud",
+        "description": "La forêt amazonienne, qui recouvre une grande partie du territoire nord-ouest brésilien et s'étend jusqu'en Colombie, au Pérou et sur d'autres pays sud-américains, est la plus grande forêt tropicale du monde, connue pour sa biodiversité.",
+        "rating": "4.0",
+        "price": "59",
         "videos": [
             ""
         ],
         "images": [
-            "assets/images/mountain/denali/img1.jpg",
-            "assets/images/mountain/denali/img2.jpg",
-            "assets/images/mountain/denali/img3.jpg",
-            "assets/images/mountain/denali/img4.jpg"
-        ]
-    },
-    {
-        "id": "f3",
-        "name": "Kirkjufell",
-        "city": "Snæfellsnes",
-        "country": "Islande",
-        "continent": "Europe",
-        "description": "Kirkjufell est située sur la côte nord de la péninsule de Snæfellsnes. Elle occupe elle-même une petite péninsule globalement elliptique, reliée par son bord sud au reste de l'Islande, à deux kilomètres à l'ouest de la municipalité de Grundarfjörður, sur le côté occidental du fjord Grundarfjörður. ",
-        "rating": "4.9",
-        "price": "54",
-        "videos": [
-            ""
-        ],
-        "images": [
-            "assets/images/mountain/kirkjufell/img1.jpg",
-            "assets/images/mountain/kirkjufell/img2.jpg",
-            "assets/images/mountain/kirkjufell/img3.jpg",
-            "assets/images/mountain/kirkjufell/img4.jpg",
-            "assets/images/mountain/kirkjufell/img5.jpg"
+            "assets/images/forest/amazon/img1.jpg",
+            "assets/images/forest/amazon/img2.jpg",
+            "assets/images/forest/amazon/img3.jpg",
+            "assets/images/forest/amazon/img4.jpg"
         ]
     }
 ]

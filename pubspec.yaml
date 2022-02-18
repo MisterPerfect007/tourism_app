@@ -69,17 +69,29 @@ flutter_icons:
 flutter:
   assets:
     - assets/images/
+
     - assets/images/beach/maldives/
     - assets/images/beach/hawai/
     - assets/images/beach/bali/
     - assets/images/beach/concha/
+
     - assets/images/mountain/cervin/
     - assets/images/mountain/denali/
     - assets/images/mountain/kirkjufell/
-    - assets/images/forest/
+
+    - assets/images/forest/amazon/
+    - assets/images/forest/redwood/
+
+    - assets/images/history/chinagreatwall/
+    - assets/images/history/petra/
+    - assets/images/history/pyramids/
+
     - assets/videos/
+
     - assets/json/beach/
     - assets/json/mountain/
+    - assets/json/forest/
+    - assets/json/history/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

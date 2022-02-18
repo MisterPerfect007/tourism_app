@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class BeachController extends GetxController {
   var beaches = [].obs;
   var cardsData = [].obs;
+  var bestSites = [].obs;
   
 
   setBeaches() async {
@@ -15,11 +16,11 @@ class BeachController extends GetxController {
   setCardsData(String currentCategorie) async {
     switch ((currentCategorie.toLowerCase())) {
       case 'plages' :
-        print("plages");
+        // print("plages");
         cardsData.value = await getCardsDataFromJson('assets/json/beach/beach.json');
         break;
       case 'montagnes' :
-        print("mont");
+        // print("mont");
         cardsData.value = await getCardsDataFromJson('assets/json/mountain/mountain.json');
         break;
       case 'forêts' :
@@ -31,6 +32,26 @@ class BeachController extends GetxController {
       default:
         cardsData.value = await getCardsDataFromJson('assets/json/beach/beach.json');
     }
+  }
+  getBestSites() async {
+    List<String> jsonUrlList = [
+      'assets/json/beach/beach.json',
+      'assets/json/mountain/mountain.json',
+      'assets/json/forest/forest.json',
+      'assets/json/history/history.json'
+    ];
+    List bestList = [];
+    for(int i = 0 ; i < jsonUrlList.length ; i++){
+      List singleUrlResult = await getCardsDataFromJson(jsonUrlList[i]);
+      // print(singleUrlResult);
+      // break;
+      for(int y = 0 ; y < singleUrlResult.length; y++){
+        if(double.parse(singleUrlResult[y]["rating"]) > 4.7){
+          bestList.add(singleUrlResult[y]);
+        }
+      }
+    }
+    bestSites.value = bestList;
   }
 }
 

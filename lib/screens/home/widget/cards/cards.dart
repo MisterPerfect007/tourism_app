@@ -18,6 +18,9 @@ class Cards extends StatelessWidget {
       beachController
           .setCardsData(value.toString());
     });
+
+    
+
   beachController
           .setCardsData(categorieController.currentCategorie.toString());
     List beachesList = beachController.cardsData;
@@ -31,6 +34,8 @@ class Cards extends StatelessWidget {
             addAutomaticKeepAlives: false,
             itemBuilder: ((context, index) {
               return OneCard(
+                  id: beachesList[index]["id"],
+                  name: beachesList[index]["name"] != null? beachesList[index]["name"] :'',
                   image: beachesList[index]["images"][0],
                   rating: beachesList[index]["rating"],
                   city: beachesList[index]["city"],

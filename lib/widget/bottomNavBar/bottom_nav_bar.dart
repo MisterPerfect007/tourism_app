@@ -55,6 +55,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             index: 1,
             selectedIndex: selectedIndex,
             setSelectedIndex: setSelectedIndex,
+            isFavoriteIttem: true,
           ),
           Expanded(child: Container()),
           BottomNavBarItem(
@@ -64,14 +65,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
             index: 2,
             selectedIndex: selectedIndex,
           ),
-          // Expanded(child: Container()),
-          // BottomNavBarItem(
-          //   iconBold: IconlyBold.setting,
-          //   iconLight: IconlyLight.setting,
-          //   index: 3,
-          //   selectedIndex: selectedIndex,
-          //   setSelectedIndex: setSelectedIndex,
-          // ),
         ],)
     )
       );
