@@ -7,6 +7,7 @@ class BeachController extends GetxController {
   var beaches = [].obs;
   var cardsData = [].obs;
   var bestSites = [].obs;
+  var allSites = [].obs;
   
 
   setBeaches() async {
@@ -41,8 +42,10 @@ class BeachController extends GetxController {
       'assets/json/history/history.json'
     ];
     List bestList = [];
+    List allSiteList = [];
     for(int i = 0 ; i < jsonUrlList.length ; i++){
       List singleUrlResult = await getCardsDataFromJson(jsonUrlList[i]);
+      allSiteList.add(singleUrlResult);
       // print(singleUrlResult);
       // break;
       for(int y = 0 ; y < singleUrlResult.length; y++){
@@ -52,6 +55,8 @@ class BeachController extends GetxController {
       }
     }
     bestSites.value = bestList;
+    allSites.value = allSiteList;
+    // print(allSiteList.length);
   }
 }
 

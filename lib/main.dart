@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourism_app/screens/Register/register.dart';
+import 'package:tourism_app/screens/SitePage/site_page.dart';
 import 'package:tourism_app/screens/home/home.dart';
 import 'package:tourism_app/screens/login/login.dart';
 import 'package:tourism_app/screens/welcome/welcome.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const Home(),
+      home: const SitePage(),
     );
   }
 }
