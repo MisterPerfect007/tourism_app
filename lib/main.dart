@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tourism_app/screens/Register/register.dart';
 import 'package:tourism_app/screens/SitePage/site_page.dart';
+import 'package:tourism_app/screens/favorite/favorite.dart';
 import 'package:tourism_app/screens/home/home.dart';
 import 'package:tourism_app/screens/login/login.dart';
 import 'package:tourism_app/screens/welcome/welcome.dart';
 
 void main() {
   runApp(const MyApp());
-} 
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const SitePage(),
+      // home: const Home(),
+      home: Favorite(),
     );
   }
 }

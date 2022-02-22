@@ -25,7 +25,7 @@ class BottomNavBarItem extends StatefulWidget {
 }
 
 class _BottomNavBarItemState extends State<BottomNavBarItem> {
-  final FavoriteCategorie favoriteCategorie = Get.put(FavoriteCategorie());
+  final FavoriteController favoriteController = Get.put(FavoriteController());
   isSelected() {
     return widget.index == widget.selectedIndex;
   }
@@ -61,7 +61,7 @@ class _BottomNavBarItemState extends State<BottomNavBarItem> {
                     borderRadius: BorderRadius.all(Radius.circular(5))
                   ),
                   child: Text(
-                      favoriteCategorie.favoriteList.length.toString(),
+                      favoriteController.favoriteList.length.toString(),
                       style: TextStyle(
                         color: /* Colors.red */ Colors.white,
                         fontSize: 15,

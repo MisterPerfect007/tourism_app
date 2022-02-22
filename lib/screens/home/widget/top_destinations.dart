@@ -19,7 +19,6 @@ class TopDestinations extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         margin: EdgeInsets.only(top: 30),
         height: 140,
-        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -44,22 +43,24 @@ class TopDestinations extends StatelessWidget {
             //   ),
             // ),
             Obx(() => Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: bestList.length,
-                cacheExtent: 9999,
-                itemBuilder: ((context, index) {
-                  // print(bestList[index]);
-                    return Destination(
-                        name: bestList[index]["name"] != null? bestList[index]["name"] : '',
-                        city: bestList[index]["city"],
-                        image: bestList[index]["images"][0],
-                        country: bestList[index]["country"],
-                        continent: bestList[index]["continent"],
-                        rating: bestList[index]["rating"]
-                      );
-                  })),
-            )),
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: bestList.length,
+                      cacheExtent: 9999,
+                      itemBuilder: ((context, index) {
+                        // print(bestList[index]);
+                        return Destination(
+                            id: bestList[index]["id"],
+                            name: bestList[index]["name"] != null
+                                ? bestList[index]["name"]
+                                : '',
+                            city: bestList[index]["city"],
+                            image: bestList[index]["images"][0],
+                            country: bestList[index]["country"],
+                            continent: bestList[index]["continent"],
+                            rating: bestList[index]["rating"]);
+                      })),
+                )),
           ],
         ));
   }

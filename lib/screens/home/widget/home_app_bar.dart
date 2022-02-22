@@ -30,30 +30,19 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           Expanded(child: Container()),
-          Row(
-            children: [
-              IconButton(
-                onPressed: (){print('yes');}, icon: Icon(
-                IconlyLight.search,
-                color: Colors.grey[700],
-                size: 30,
-              ))
-              ,
-              SizedBox(width: 15),
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(50)),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/id_photo.jpg',
+          SizedBox(width: 15),
+          Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+              image: DecorationImage(
+                image: AssetImage(
+                  'assets/images/id_photo.jpg',
 
-                      )
                   )
-                ),
               )
-            ],
+            ),
           )
         ],
       ),

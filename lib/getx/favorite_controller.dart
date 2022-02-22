@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 
-class FavoriteCategorie extends GetxController{
+class FavoriteController extends GetxController{
   var favoriteList = [].obs;
 
   addItemToFavoriteList(id) {
