@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
         preferredSize: Size(MediaQuery.of(context).size.width, 80),
         child: HomeAppBar()
       ),
-      bottomNavigationBar: BottomNavBar(),
+      // bottomNavigationBar: BottomNavBar(),
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 15, right: 15),

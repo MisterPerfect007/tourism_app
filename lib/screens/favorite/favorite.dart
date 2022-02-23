@@ -1,38 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:tourism_app/getx/beach_controler.dart';
+import 'package:tourism_app/getx/favorite_controller.dart';
 import 'package:tourism_app/widget/bottomNavBar/bottom_nav_bar.dart';
 
 import 'favorite_app_bar.dart';
 
-class Favorite extends StatelessWidget {
-  const Favorite({Key? key}) : super(key: key);
+class Favorite extends StatefulWidget {
+  Favorite({Key? key}) : super(key: key);
+
+  @override
+  State<Favorite> createState() => _FavoriteState();
+}
+
+class _FavoriteState extends State<Favorite> {
+  final BeachController beachController = Get.put(BeachController());
+  final FavoriteController favoriteController = Get.put(FavoriteController());
+
+  List allFavorite = [];
+
+/* refactor here */
+  fetchData() async {
+    List allFavoriteList = [];
+    favoriteController.favoriteList.forEach((id) async {
+      Map comingData = await beachController.getSiteById(id);
+      allFavoriteList.add(comingData);
+    });
+    setState(() {
+      allFavorite = allFavoriteList;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) => fetchData());
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width, 80),
-        child: FavoriteAppBar(),
-      ),
-      bottomNavigationBar: BottomNavBar(),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(children: [
-            FavoriteItem(),
-            FavoriteItem(),
-            FavoriteItem(),
-          ]),
+        appBar: PreferredSize(
+          preferredSize: Size(MediaQuery.of(context).size.width, 80),
+          child: FavoriteAppBar(),
         ),
-      ),
-    );
+        // bottomNavigationBar: BottomNavBar(),
+        body: ListView.builder(
+            itemCount: allFavorite.length,
+            itemBuilder: (context, index) {
+              return FavoriteItem(
+                site: allFavorite[index],
+              );
+            }));
   }
 }
 
 class FavoriteItem extends StatelessWidget {
-  const FavoriteItem({Key? key}) : super(key: key);
+  final Map site;
+  FavoriteItem({Key? key, required this.site}) : super(key: key);
+  final FavoriteController favoriteController = Get.put(FavoriteController());
 
   @override
   Widget build(BuildContext context) {
+    String image = site["images"][0];
     return Container(
       height: 200,
       width: MediaQuery.of(context).size.width,
@@ -43,27 +69,34 @@ class FavoriteItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/images/beach-img.jpg'))),
+                    fit: BoxFit.cover, image: AssetImage(image))),
           ),
-          Infos(),
-          Rating(),
+          Infos(
+            site: site,
+          ),
+          Rating(
+            rating: site["rating"],
+          ),
           Positioned(
             top: 10,
             right: 10,
-            child: Container(
-                padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-                decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.3),
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-                ),
-                child: Text(
-                  'Rétirer', 
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.w600
-                    ))),
-          )
+            child: GestureDetector(
+              onTap: () {
+                favoriteController.addItemToFavoriteList(site["id"]);
+              },
+              child:  Container(
+                  padding:
+                      EdgeInsets.only(top: 2, bottom: 2, left: 5, right: 5),
+                  decoration: BoxDecoration(
+                      color: Colors.red.withOpacity(0.3),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Text('Rétirer',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400)))),
+            ),
+          
         ],
       ),
     );
@@ -71,12 +104,13 @@ class FavoriteItem extends StatelessWidget {
 }
 
 class Infos extends StatelessWidget {
-  const Infos({
-    Key? key,
-  }) : super(key: key);
+  final Map site;
+  const Infos({Key? key, required this.site}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String nameOrCity = site["name"] != null ? site["name"] : site["city"];
+    String countryAndContinent = site["country"] + ', ' + site["continent"];
     return Positioned(
       bottom: 20,
       left: 20,
@@ -93,7 +127,7 @@ class Infos extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Name or city',
+              nameOrCity,
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -103,7 +137,7 @@ class Infos extends StatelessWidget {
               height: 5,
             ),
             Text(
-              'Country, continent',
+              countryAndContinent,
               style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'SourceSansPro',
@@ -117,9 +151,8 @@ class Infos extends StatelessWidget {
 }
 
 class Rating extends StatelessWidget {
-  const Rating({
-    Key? key,
-  }) : super(key: key);
+  final String rating;
+  const Rating({Key? key, required this.rating}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +174,7 @@ class Rating extends StatelessWidget {
               width: 5,
             ),
             Text(
-              '4.9',
+              rating,
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,

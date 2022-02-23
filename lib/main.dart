@@ -5,6 +5,7 @@ import 'package:tourism_app/screens/favorite/favorite.dart';
 import 'package:tourism_app/screens/home/home.dart';
 import 'package:tourism_app/screens/login/login.dart';
 import 'package:tourism_app/screens/welcome/welcome.dart';
+import 'package:tourism_app/widget/Navigation/navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
       ),
       // home: const Home(),
-      home: Favorite(),
+      home: Navigation(),
     );
   }
 }
