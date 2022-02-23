@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourism_app/getx/beach_controler.dart';
 import 'package:tourism_app/getx/favorite_controller.dart';
+import 'package:tourism_app/screens/SitePage/site_page.dart';
 import 'package:tourism_app/widget/bottomNavBar/bottom_nav_bar.dart';
 
 import 'favorite_app_bar.dart';
@@ -20,34 +24,45 @@ class _FavoriteState extends State<Favorite> {
 
   List allFavorite = [];
 
-/* refactor here */
-  fetchData() async {
-    List allFavoriteList = [];
-    favoriteController.favoriteList.forEach((id) async {
-      Map comingData = await beachController.getSiteById(id);
-      allFavoriteList.add(comingData);
-    });
-    setState(() {
-      allFavorite = allFavoriteList;
-    });
+  /* Shared preferences */
+  getConnectedUser() async{
+    final prefs = await SharedPreferences.getInstance();
+    print(prefs.getString('connectedUser'));
+    // prefs.setString('connectedUser', jsonEncode(existingUser);
+
   }
+  /* Shared preferences */
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) => fetchData());
+    getConnectedUser();
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, 80),
           child: FavoriteAppBar(),
         ),
         // bottomNavigationBar: BottomNavBar(),
-        body: ListView.builder(
-            itemCount: allFavorite.length,
-            itemBuilder: (context, index) {
-              return FavoriteItem(
-                site: allFavorite[index],
-              );
-            }));
+        body: Obx(() {
+          List list = favoriteController.allFavorite;
+          return list.isNotEmpty
+              ? ListView.builder(
+                  cacheExtent: 9999,
+                  itemCount: list.length,
+                  itemBuilder: (context, index) {
+                    return FavoriteItem(
+                      site: list[index],
+                    );
+                  })
+              : Center(
+                  child: Text(
+                  'Vous avez 0 Favori',
+                  style: TextStyle(
+                      color: Colors.grey[700],
+                      fontFamily: 'SourceSansPro',
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600),
+                ));
+        }));
   }
 }
 
@@ -59,45 +74,50 @@ class FavoriteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String image = site["images"][0];
-    return Container(
-      height: 200,
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                image: DecorationImage(
-                    fit: BoxFit.cover, image: AssetImage(image))),
-          ),
-          Infos(
-            site: site,
-          ),
-          Rating(
-            rating: site["rating"],
-          ),
-          Positioned(
-            top: 10,
-            right: 10,
-            child: GestureDetector(
-              onTap: () {
-                favoriteController.addItemToFavoriteList(site["id"]);
-              },
-              child:  Container(
-                  padding:
-                      EdgeInsets.only(top: 2, bottom: 2, left: 5, right: 5),
-                  decoration: BoxDecoration(
-                      color: Colors.red.withOpacity(0.3),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: Text('Rétirer',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400)))),
+    return GestureDetector(
+      onTap: (() {
+        Navigator.of(context)
+          .push(MaterialPageRoute(builder: ((context) => SitePage(id: site["id"]))));
+      }),
+      child: Container(
+        height: 200,
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: AssetImage(image))),
             ),
-          
-        ],
+            Infos(
+              site: site,
+            ),
+            Rating(
+              rating: site["rating"],
+            ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: GestureDetector(
+                  onTap: () {
+                    favoriteController.addItemToFavoriteList(site["id"]);
+                  },
+                  child: Container(
+                      padding:
+                          EdgeInsets.only(top: 2, bottom: 2, left: 5, right: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      child: Text('Rétirer',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600)))),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -6,6 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourism_app/screens/Register/helpers.dart';
 import 'package:tourism_app/screens/home/home.dart';
 
+import '../../widget/Navigation/navigation.dart';
+
 Future<bool> isUserExisting({email, password}) async {
   final prefs = await SharedPreferences.getInstance();
   if (prefs.containsKey('users')) {
@@ -30,7 +32,7 @@ handleUserConnection(context) async {
       title: 'Ok', message: 'Vous êtes maintenant connecté', type: 'success');
   await Future.delayed(Duration(seconds: 2), () {});
 
-  Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  Navigator.push(context, MaterialPageRoute(builder: (context) => Navigation()));
   // if (await isUserExisting(email: email, password: password)) {
 
   // }

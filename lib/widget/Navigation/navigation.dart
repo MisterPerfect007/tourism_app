@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/screens/account/account.dart';
 import 'package:tourism_app/screens/favorite/favorite.dart';
 import 'package:tourism_app/screens/home/home.dart';
 
@@ -23,7 +24,7 @@ class _NavigationState extends State<Navigation> {
   List<Widget> screens = [
     Home(),
     Favorite(),
-    Center(child: Text('account'),),
+    Account(),
   ];
 
   @override
