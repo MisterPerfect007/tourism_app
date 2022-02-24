@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:glass_kit/glass_kit.dart';
 import 'package:iconly/iconly.dart';
 import 'package:tourism_app/screens/Register/helpers.dart';
 import 'package:tourism_app/screens/Register/register.dart';
@@ -78,7 +77,7 @@ class _LoginFormState extends State<LoginForm> {
                         });
                         if (await isUserExisting(
                             email: email, password: password)) {
-                          await handleUserConnection(context);
+                          await handleUserConnection(context, email, password);
                         } else {
                           showSnackBar(context,
                               title: 'Email ou mot de passe incorrect !',

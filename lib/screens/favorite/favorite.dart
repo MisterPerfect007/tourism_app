@@ -24,18 +24,9 @@ class _FavoriteState extends State<Favorite> {
 
   List allFavorite = [];
 
-  /* Shared preferences */
-  getConnectedUser() async{
-    final prefs = await SharedPreferences.getInstance();
-    print(prefs.getString('connectedUser'));
-    // prefs.setString('connectedUser', jsonEncode(existingUser);
-
-  }
-  /* Shared preferences */
-
   @override
   Widget build(BuildContext context) {
-    getConnectedUser();
+    favoriteController.retrieveFavoritesFromPref();
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, 80),
@@ -76,8 +67,8 @@ class FavoriteItem extends StatelessWidget {
     String image = site["images"][0];
     return GestureDetector(
       onTap: (() {
-        Navigator.of(context)
-          .push(MaterialPageRoute(builder: ((context) => SitePage(id: site["id"]))));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: ((context) => SitePage(id: site["id"]))));
       }),
       child: Container(
         height: 200,

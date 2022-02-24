@@ -16,14 +16,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-  // var list = [1, 2, 3, 4, {"name": 1}];
-  // String json = jsonEncode(list);
-  // print('string' + json);
-
-  // List list2 = jsonDecode(json);
-  // print(list2);
     double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(

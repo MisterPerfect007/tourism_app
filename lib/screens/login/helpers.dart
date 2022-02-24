@@ -18,7 +18,7 @@ Future<bool> isUserExisting({email, password}) async {
         (user) => user["email"] == email && user["password"] == password,
         orElse: () => {});
     if (existingUser.isNotEmpty) {
-      prefs.setString('connectedUser', jsonEncode(existingUser));
+      prefs.setString('connectedUserId', jsonEncode(existingUser["id"]));
       return true;
     } else
       return false;
@@ -26,17 +26,21 @@ Future<bool> isUserExisting({email, password}) async {
     return false;
 }
 
-handleUserConnection(context) async {
+handleUserConnection(context, email, password) async {
+  final prefs = await SharedPreferences.getInstance();
+  String? users = prefs.getString('users');
+  List usersList = jsonDecode(users!);
+  Map currentUser = usersList.firstWhere(
+      (user) => user["email"] == email && user["password"] == password,
+      orElse: () => {});
+  prefs.setString('connectedUserId', currentUser["id"]);
+  print(currentUser);
+
   await Future.delayed(Duration(seconds: 3), () {});
   showSnackBar(context,
       title: 'Ok', message: 'Vous êtes maintenant connecté', type: 'success');
   await Future.delayed(Duration(seconds: 2), () {});
 
-  Navigator.push(context, MaterialPageRoute(builder: (context) => Navigation()));
-  // if (await isUserExisting(email: email, password: password)) {
-
-  // }
-  // else {
-
-  // }
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => Navigation()));
 }

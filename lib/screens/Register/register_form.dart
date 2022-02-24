@@ -155,6 +155,8 @@ class _RegisterFormState extends State<RegisterForm> {
         "pseudo": formData["pseudo"],
         "email": formData["email"],
         "password": formData["password"],
+        "avatar": '',
+        "favorites": []
       };
       // print(userData);
       final prefs = await SharedPreferences.getInstance();
@@ -162,12 +164,6 @@ class _RegisterFormState extends State<RegisterForm> {
       if (prefs.containsKey('users')) {
         String? users = prefs.getString('users');
         List usersList = jsonDecode(users!);
-
-        // Map existingEmail = usersList.firstWhere((user) =>
-        //     user["email"] == userData["email"] );
-        // if(existingEmail["email"]){
-
-        // }
 
         usersList.add(userData);
         prefs.setString('users', jsonEncode(usersList));
