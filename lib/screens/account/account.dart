@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tourism_app/getx/favorite_controller.dart';
 import 'package:tourism_app/getx/user_controller.dart';
+import 'package:tourism_app/screens/account/helpers.dart';
 import 'package:tourism_app/screens/imagePicker/image_picker.dart';
 
 import 'account_app_bar.dart';
@@ -26,6 +27,7 @@ class Account extends StatelessWidget {
           padding: EdgeInsets.all(15),
           width: MediaQuery.of(context).size.width,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 child: GestureDetector(
@@ -34,30 +36,22 @@ class Account extends StatelessWidget {
                         builder: (context) => ImagePicking()));
                   },
                   child: Stack(children: [
-                    // Container(
-                    //   alignment: Alignment.bottomRight,
-                    //   width: 200,
-                    //   height: 200,
-                    //   decoration: BoxDecoration(
-                    //       // color: Colors.red,
-                    //       borderRadius: BorderRadius.all(Radius.circular(200)),
-                    //       image: DecorationImage(
-                    //           image: AssetImage('assets/images/id_photo.jpg'))),
-                    // ),
-                    Obx( () => ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(200)),
-                      child: userController.userImage.isNotEmpty? Image.file(
-                        File(userController.userImage.toString()),
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ) : Image.asset(
-                        'assets/images/avatar.png',
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    )),
+                    Obx(() => ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(200)),
+                          child: userController.userImage.isNotEmpty
+                              ? Image.file(
+                                  File(userController.userImage.toString()),
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  'assets/images/avatar.png',
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                ),
+                        )),
                     Positioned(
                       bottom: 10,
                       right: 10,
@@ -86,14 +80,6 @@ class Account extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Text(
-                  //   'Salut, ... ',
-                  //   style: TextStyle(
-                  //     fontSize: 30,
-                  //     fontFamily: 'SourceSansPro',
-                  //     color: Colors.grey[700]
-                  //   ),
-                  //   ),
                   Text(
                     userController.userPseudo.toString(),
                     style: TextStyle(
@@ -123,7 +109,15 @@ class Account extends StatelessWidget {
                     fontFamily: 'SourceSansPro',
                     fontSize: 20,
                     fontWeight: FontWeight.w500),
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    handleLogOut(context);
+                  },
+                  child: Text('Se déconecter'))
             ],
           ),
         ),
