@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourism_app/screens/Register/helpers.dart';
+import 'package:tourism_app/widget/Navigation/navigation.dart';
 
 import 'login_form.dart';
 
@@ -27,19 +29,30 @@ class _LoginState extends State<Login> {
       showSnackBar(context,
           title: 'Vous pouvez vous connecter !',
           message: 'Inscription réussie .',
-          type: 'success'
-          );
+          type: 'success');
     }
     isFromRegister = false;
+  }
+
+  Future<bool> isAnyUserConnected() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('connectedUserId'))
+      return true;
+    else
+      return false;
   }
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+      if(await isAnyUserConnected()) {
+        Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Navigation())));
+        return;
+      }
+      // await isAnyUserConnected()? Navigator.of(context).push(MaterialPageRoute(builder: ((context) => Navigation()))) : null;
       showSnackBarIfFromRegister();
     });
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
@@ -60,22 +73,22 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.5),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
-                        child: Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Icon(IconlyLight.arrow_left,
-                              size: 30, color: Colors.black),
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.all(5),
+                      //   decoration: BoxDecoration(
+                      //       color: Colors.white.withOpacity(0.5),
+                      //       borderRadius:
+                      //           BorderRadius.all(Radius.circular(30))),
+                      //   child: Container(
+                      //     padding: EdgeInsets.all(5),
+                      //     decoration: BoxDecoration(
+                      //         color: Colors.white,
+                      //         borderRadius:
+                      //             BorderRadius.all(Radius.circular(20))),
+                      //     child: Icon(IconlyLight.arrow_left,
+                      //         size: 30, color: Colors.black),
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 15,
                       ),

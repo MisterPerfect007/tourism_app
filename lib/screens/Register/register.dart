@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:iconly/iconly.dart';
@@ -18,7 +16,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         body: Container(
             width: screenWidth,
             height: MediaQuery.of(context).size.height,
@@ -28,42 +26,45 @@ class _RegisterState extends State<Register> {
                   fit: BoxFit.cover),
             ),
             child: SafeArea(
-              child: Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                width: screenWidth,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 15,
-                      ),
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.5),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30))),
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  width: screenWidth,
+                  height: MediaQuery.of(context).size.height * 0.9,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 15,
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.pop(context);
+                          },
                           child: Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(0.5),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: Icon(IconlyLight.arrow_left,
-                                size: 30, color: Colors.black),
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: Icon(IconlyLight.arrow_left,
+                                  size: 30, color: Colors.black),
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Expanded(child: FormContainer(screenWidth: screenWidth))
-                    ]
-                  ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Expanded(child: FormContainer(screenWidth: screenWidth))
+                      ]
+                    ),
+                ),
               ),
             )
           )
@@ -83,7 +84,7 @@ class FormContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
 
-      height: MediaQuery.of(context).size.height * .7,
+      // height: MediaQuery.of(context).size.height * .7,
       // color: Colors.red.shade100, 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,9 +108,9 @@ class FormContainer extends StatelessWidget {
             height: 30,
           ),
           Expanded(child: RegisterForm(screenWidth: screenWidth)),
-          SizedBox(
-            height: 50,
-          ),
+          // SizedBox(
+          //   height: 50,
+          // ),
         ],
       ),
     );

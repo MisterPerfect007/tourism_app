@@ -19,9 +19,9 @@ class _ImagePickingState extends State<ImagePicking> {
 
   @override
   Widget build(BuildContext context) {
-    Future pickImage() async {
+    Future pickImage(source) async {
       final ImagePicker _picker = ImagePicker();
-      final image = await _picker.pickImage(source: ImageSource.gallery);
+      final image = await _picker.pickImage(source: source);
       if (image == null) return;
       // File()
       setState(() {
@@ -90,19 +90,36 @@ class _ImagePickingState extends State<ImagePicking> {
                 : Text(''),
             Container(
               width: 200,
-              child: ElevatedButton(
-                  onPressed: () => pickImage(),
-                  child: Row(
-                    children: [
-                      Icon(Icons.photo),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(currentImage != null
-                          ? 'Choisir une autre'
-                          : 'Choisir une photo')
-                    ],
-                  )),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                      onPressed: () => pickImage(ImageSource.gallery),
+                      child: Row(
+                        children: [
+                          Icon(Icons.photo),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(currentImage != null
+                              ? 'Choisir une autre'
+                              : 'Choisir une photo')
+                        ],
+                      )),
+                  ElevatedButton(
+                      onPressed: () => pickImage(ImageSource.camera),
+                      child: Row(
+                        children: [
+                          Icon(Icons.camera_alt),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(currentImage != null
+                              ? 'Prendre une autre'
+                              : 'Prendre une photo')
+                        ],
+                      )),
+                ],
+              ),
             ),
           ],
         ),

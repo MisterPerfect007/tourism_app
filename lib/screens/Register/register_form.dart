@@ -90,9 +90,7 @@ class _RegisterFormState extends State<RegisterForm> {
           firstInputPassword: firstInputPassword,
           setConfirmPassword: setConfirmPassword,
         ),
-        SizedBox(
-          height: 50,
-        ),
+        Expanded(child: Container()),
         Container(
           width: widget.screenWidth,
           child: Column(

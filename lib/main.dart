@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourism_app/screens/Register/register.dart';
 import 'package:tourism_app/screens/SitePage/site_page.dart';
 import 'package:tourism_app/screens/favorite/favorite.dart';
@@ -13,6 +14,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  
 
   // This widget is the root of your application.
   @override 
@@ -24,7 +26,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
       ),
       // home: const Navigation(),
-      home: Login(),
+      home: Login()
     );
   }
 }
+  isAnyUserConnected() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('connectedUserId'))
+      return true;
+    else
+      return false;
+  }

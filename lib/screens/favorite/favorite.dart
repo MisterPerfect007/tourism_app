@@ -25,23 +25,29 @@ class _FavoriteState extends State<Favorite> {
   List allFavorite = [];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     favoriteController.retrieveFavoritesFromPref();
+    setState(() {
+      allFavorite = favoriteController.allFavorite;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, 80),
           child: FavoriteAppBar(),
         ),
         // bottomNavigationBar: BottomNavBar(),
-        body: Obx(() {
-          List list = favoriteController.allFavorite;
-          return list.isNotEmpty
+        body: allFavorite.isNotEmpty
               ? ListView.builder(
                   cacheExtent: 9999,
-                  itemCount: list.length,
+                  itemCount: allFavorite.length,
                   itemBuilder: (context, index) {
                     return FavoriteItem(
-                      site: list[index],
+                      site: allFavorite[index],
                     );
                   })
               : Center(
@@ -52,8 +58,8 @@ class _FavoriteState extends State<Favorite> {
                       fontFamily: 'SourceSansPro',
                       fontSize: 30,
                       fontWeight: FontWeight.w600),
-                ));
-        }));
+                ))
+        );
   }
 }
 

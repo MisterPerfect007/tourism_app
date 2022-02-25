@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tourism_app/getx/favorite_controller.dart';
 import 'package:tourism_app/getx/user_controller.dart';
@@ -37,12 +38,18 @@ class _NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     userController.retrieveUserInfos();
     favoriteController.retrieveFavoritesFromPref();
-    return Scaffold(
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: selectedIndex,
-        setSelectedIndex: setSelectedIndex,
+    return WillPopScope(
+      onWillPop: () async {
+        SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+        return false;
+      },
+      child: Scaffold(
+        bottomNavigationBar: BottomNavBar(
+          selectedIndex: selectedIndex,
+          setSelectedIndex: setSelectedIndex,
+        ),
+        body: screens[selectedIndex],
       ),
-      body: screens[selectedIndex],
     );
   }
 }
