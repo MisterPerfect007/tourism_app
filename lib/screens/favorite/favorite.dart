@@ -35,7 +35,10 @@ class _FavoriteState extends State<Favorite> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    setState(() {
+      allFavorite = favoriteController.allFavorite;
+    });
+    return Obx( () => Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, 80),
           child: FavoriteAppBar(),
@@ -59,7 +62,7 @@ class _FavoriteState extends State<Favorite> {
                       fontSize: 30,
                       fontWeight: FontWeight.w600),
                 ))
-        );
+        ));
   }
 }
 
@@ -100,6 +103,7 @@ class FavoriteItem extends StatelessWidget {
               child: GestureDetector(
                   onTap: () {
                     favoriteController.addItemToFavoriteList(site["id"]);
+                    
                   },
                   child: Container(
                       padding:
